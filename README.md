@@ -1,4 +1,4 @@
-# 🥊 Boxing Position Tracker
+# Boxing Position Tracker
 
 Streamlit web app that turns a boxing match video into a csv of each boxer's feet positions on the ring, frame-by-frame over the match. The pipeline does boxer tracking, pose estimation, and ring-geometry warping, with only some slight manual input required. Position data can be downloaded and used for position, ring control and ring dominance analysis. 
 
@@ -7,7 +7,7 @@ Streamlit web app that turns a boxing match video into a csv of each boxer's fee
 
 ## How it works
 
-The app walks the user through six guided stages:
+The app takes the user through six guided stages:
 
 | Stage | What happens |
 |---|---|
