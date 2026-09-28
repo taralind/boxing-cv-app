@@ -2,8 +2,13 @@
 
 Streamlit web app that turns a boxing match video into a csv of each boxer's feet positions on the ring, frame-by-frame over the match. The pipeline does boxer tracking, pose estimation, and ring-geometry warping, with only some slight manual input required. Position data can be downloaded and used for position, ring control and ring dominance analysis. 
 
+## Detection preview
 
-## Demo
+https://github.com/user-attachments/assets/c766bf49-81ad-400b-8a9f-c7233568ca2c
+
+## App Demo
+
+https://github.com/user-attachments/assets/e43d2967-194a-4b69-b8e5-2774d8d7ea38
 
 ## How it works
 
@@ -24,8 +29,6 @@ The app takes the user through six guided stages:
 - **Ring-warped position CSV** (`.csv`) — per-frame ankle coordinates for each boxer, translated into ring-relative coordinates.
 
 ## Data dictionary
-
-> 📋 **[Expand this section as the schema evolves]**
 
 Starting point based on the current CSV output:
 
