@@ -1,28 +1,3 @@
-"""
-pipeline_core.py
-─────────────────
-Refactored core of boxing_pipeline_withwarp.py for use inside a Streamlit app.
-
-What changed vs. the original script (logic is otherwise identical):
-  • No argparse / CLI / multi-round folder discovery — the app works on ONE
-    uploaded video at a time (treated as "round 1").
-  • No cv2.namedWindow / imshow / waitKey / setMouseCallback anywhere. Every
-    interactive routine (label_tracks, select_ring_corners) has been split
-    into:
-        - a pure "render" function that draws the current state to an image
-        - a pure "handle click" function that updates state given an (x, y)
-    The Streamlit layer (app.py) owns the actual click widget and loop.
-  • All paths are parameterised (work_dir) instead of "./..." so multiple
-    Streamlit sessions never collide.
-  • Heavy libraries (ultralytics, rtmlib, supervision) are imported lazily
-    inside the functions that need them, so the app can start up and render
-    the upload screen without them installed/working yet.
-
-Every numeric constant, threshold, and algorithm below is copied verbatim
-from the original boxing_pipeline_withwarp.py so pipeline behaviour/outputs
-are unchanged.
-"""
-
 from __future__ import annotations
 
 import csv
@@ -40,7 +15,7 @@ import numpy as np
 import pandas as pd
 
 # ──────────────────────────────────────────────────────────────────────────────
-# Config (verbatim from original script)
+# Config
 # ──────────────────────────────────────────────────────────────────────────────
 
 IDENTITIES  = ["Blue boxer", "Red boxer", "Judge"]
@@ -85,8 +60,6 @@ MODEL_SIZE   = "yolov8s.pt"
 IMG_SIZE     = 640
 YOLO_CONF    = 0.60
 
-# Original hard-coded cache path where rtmlib stores the RTMPose-x checkpoint
-# after Body() downloads it once during the labelling phase.
 RTMPOSE_ONNX = (
     "~/.cache/rtmlib/hub/checkpoints/"
     "rtmpose-x_simcc-body7_pt-body7_700e-384x288-71d7b7e9_20230629.onnx"
@@ -94,7 +67,6 @@ RTMPOSE_ONNX = (
 RTMPOSE_INPUT_SIZE = (288, 384)
 
 VIDEO_EXTS = {".mov", ".mp4", ".avi", ".mkv", ".m4v"}
-
 
 # ──────────────────────────────────────────────────────────────────────────────
 # Small data holders
@@ -301,7 +273,7 @@ def propagate_window(window_tracker, frames_dir: str, frame_names: list, seed_fi
 
 
 # ──────────────────────────────────────────────────────────────────────────────
-# Phase 1b — Click-to-label UI helpers (replaces cv2 label_tracks GUI)
+# Phase 1b — Click-to-label UI helpers
 # ──────────────────────────────────────────────────────────────────────────────
 
 def track_at(cx: float, cy: float, track_ids: list, bboxes: list):
@@ -402,7 +374,7 @@ def finalize_dataset(staging_dir: str, dataset_dir: str, dataset_yaml_path: str,
 
 
 # ──────────────────────────────────────────────────────────────────────────────
-# Phase 1c — Ring-corner click UI helpers (replaces cv2 select_ring_corners GUI)
+# Phase 1c — Ring-corner click UI helpers
 # ──────────────────────────────────────────────────────────────────────────────
 
 def render_corner_canvas(frame: np.ndarray, clicks: list) -> np.ndarray:
