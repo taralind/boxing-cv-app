@@ -42,11 +42,11 @@ Starting point based on the current CSV output:
 | `status` | Detection status for that identity in that frame: `detected`, `box_only` (detected but no pose), `lost`, or `interpolated` (position filled in from neighbouring frames). |
 | `left_ankle_x` / `left_ankle_y` / `left_ankle_conf` | Raw pixel coordinates and confidence for the left ankle keypoint. |
 | `right_ankle_x` / `right_ankle_y` / `right_ankle_conf` | Raw pixel coordinates and confidence for the right ankle keypoint. |
-| `left_ankle_warped_x` / `left_ankle_warped_y` | Left ankle position warped into ring-space coordinates. |
-| `right_ankle_warped_x` / `right_ankle_warped_y` | Right ankle position warped into ring-space coordinates. |
-| `left_ankle_rel_x` / `left_ankle_rel_y` | Left ankle position relative to the centre of the ring. |
-| `right_ankle_rel_x` / `right_ankle_rel_y` | Right ankle position relative to the centre of the ring. |
-| `left_ankle_dist_cm` / `right_ankle_dist_cm` | Straight-line distance of each ankle from the centre of the ring, in centimetres. |
+| `left_ankle_warped_x` / `left_ankle_warped_y` | Left ankle position warped into ring-space coordinates (cm). |
+| `right_ankle_warped_x` / `right_ankle_warped_y` | Right ankle position warped into ring-space coordinates (cm). |
+| `left_ankle_rel_x` / `left_ankle_rel_y` | Left ankle position relative to the centre of the ring (cm). |
+| `right_ankle_rel_x` / `right_ankle_rel_y` | Right ankle position relative to the centre of the ring (cm). |
+| `left_ankle_dist_cm` / `right_ankle_dist_cm` | Straight-line distance of each ankle from the centre of the ring (cm). |
 
 ## Running the app
 
