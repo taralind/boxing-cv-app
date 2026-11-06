@@ -34,7 +34,7 @@ Starting point based on the current CSV output:
 
 | Column | Description |
 |---|---|
-| `Round` | Round number (currently always `1`; see Roadmap re: multi-round support). |
+| `Round` | Round number (currently always `1`). |
 | `match_name` | Name given to the match at upload time; used to identify the source video. |
 | `frame_idx` | Index of the frame within the extracted sequence. |
 | `frame_file` | Filename of the source frame image. |
